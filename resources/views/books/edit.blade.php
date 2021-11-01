@@ -48,7 +48,7 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Price:</strong>
+                    <strong>Price(in BDT):</strong>
                     <input type="text" name="price" value="{{ $book->price }}" class="form-control">
                 </div>
             </div>

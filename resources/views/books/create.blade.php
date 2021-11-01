@@ -6,6 +6,7 @@
             <div class="pull-left">
                 <h3>Add Book</h3>
             </div>
+           
         </div>
     </div>
 
@@ -47,7 +48,7 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Price:</strong>
+                    <strong>Price(in BDT):</strong>
                     <input type="text" name="price" class="form-control">
                 </div>
             </div>
@@ -55,6 +56,8 @@
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-success">Add Book</button>
             </div>
+
+           
         </div>
 
     </form>

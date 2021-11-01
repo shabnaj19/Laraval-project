@@ -8,6 +8,7 @@
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('books.create') }}">Add Book</a>
+                <a class="btn btn-success" href="/user/login">Log Out</a>
             </div>
         </div>
     </div>
@@ -24,7 +25,7 @@
             <th>Book Name</th>
             <th>Author Name</th>
             <th>Publish Date</th>
-            <th>Price</th>
+            <th>Price(in BDT)</th>
             <th width="280px">Actions</th>
         </tr>
         @foreach ($books as $book)
