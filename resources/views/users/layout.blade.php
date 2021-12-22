@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Login Page</title>
+    <title>Admin Login Page</title>
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
@@ -12,7 +12,7 @@
 
     <div class="text-center" style="margin: 50px 0 50px 0;">
     
-    <br><h1><strong>Login Page</strong></h1>
+    <br><h1><strong>Admin Login Page</strong></h1>
     </div>
 
     @yield('content')

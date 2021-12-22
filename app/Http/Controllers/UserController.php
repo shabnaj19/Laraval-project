@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Validator;
+use Auth;
 
 class UserController extends Controller
 {
@@ -15,10 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::latest()->paginate(5);
-
-        return view('users.login',compact('users'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('users.login');
     }
 
     /**
@@ -26,9 +24,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function successLogin()
     {
-        //return view('users.create');
+        return view('books.index');
     }
 
     /**
@@ -37,17 +35,29 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(Request $request)
     {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
+
+        $this->validate($request, [
+        'username'  => 'required|string',
+        'password'  => 'required|string'
         ]);
-
-        User::create($request->all());
-
-        return redirect()->route('books.index')
-            ->with('success','Logged In successfully!');
+        
+        $user = array(
+            'username' => $request->get('username'),
+            'password' => $request->get('password')
+        );
+        
+        if(Auth::attempt($user)){
+            return redirect()->route('books.index')
+            ->with('success','Welcome, Admin!');
+        }
+        else{
+            return back()->with('error', 'Invalid Login Details!');
+            
+        }
+        
     }
 
     /**
@@ -58,7 +68,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //return view('users.show',compact('user'));
+        //
     }
 
     /**
@@ -81,17 +91,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        /*
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]);
-
-        $user->update($request->all());
-
-        return redirect()->route('users.index')
-            ->with('success','User Info updated successfully!');
-        */
+        //
     }
 
     /**
@@ -104,8 +104,11 @@ class UserController extends Controller
     {
         //
     }
-
     
+    public function logout(){
+        Auth::logout();
+        return redirect('users');
+    }
 }
 
 ?>

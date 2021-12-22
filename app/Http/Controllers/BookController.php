@@ -6,6 +6,7 @@ use App\Models\Book;
 use Illuminate\Http\Request;
 
 
+
 class BookController extends Controller
 {
     /**
@@ -109,24 +110,11 @@ class BookController extends Controller
         return redirect()->route('books.index')
             ->with('success','Book Info deleted successfully!');
     }
-    /*
-    public function logout(User $user)
-    {
-        User::logout();
-
-        return redirect()->route('users.login')
-            ->with('success','You have been successfully logged out!');
-        
-    }
-    
    
-    public function logout (Request $request) 
+    public function search(Book $book)
     {
-        $accessToken = auth()->user()->token();
-        $token= $request->user()->tokens->find($accessToken);
-        $token->revoke();
-        return response(['message' => 'You have been successfully logged out.'], 200);
+        //
+        return Book::where('bookname','like','%'.$book.'%')->get();
     }
-    */
 }
 ?>

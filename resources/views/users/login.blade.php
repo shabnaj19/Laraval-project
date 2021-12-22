@@ -2,19 +2,21 @@
 
 @section('content')
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            Invalid Input Information.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    @if(isset(Auth::user()->username))    
+        <script>window.location="{{ url('/users/sucessLogin') }}";</script>
     @endif
 
+    @if ($message = Session::get('error'))
+    <div class="alert alert-danger alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ $message }}</strong>
+    </div>
+    @endif
+
+  
+
     
-    <form action="{{ route('users.store') }}" method="POST">
+    <form action="{{ url('/users/store') }}" method="POST">
         @csrf
 
         <div class="row">

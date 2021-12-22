@@ -20,7 +20,7 @@ class User extends Authenticatable
      */
     
     protected $fillable = [
-        'username', 'password',
+        'username', 'password', 'rememberToken',
     ];
 
     /**
@@ -31,7 +31,7 @@ class User extends Authenticatable
     
     protected $hidden = [
         'password',
-        // 'remember_token'
+        'rememberToken',
     ];
 
     /**

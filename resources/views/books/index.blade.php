@@ -8,7 +8,7 @@
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('books.create') }}">Add Book</a>
-                <a class="btn btn-success" href="/user/login">Log Out</a>
+                <a class="btn btn-success" href="{{ url('users/logout') }}">Log Out</a>
             </div>
         </div>
     </div>
@@ -19,6 +19,7 @@
         </div>
     @endif
 
+    
     <table class="table table-bordered">
         <tr>
             <th>ID</th>

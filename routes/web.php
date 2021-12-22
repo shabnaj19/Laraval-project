@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,14 +17,13 @@ use App\Http\Controllers\UserController;
 */
 
 Route::resource('books',BookController::class);
-Route::resource('users',UserController::class);
+//Route::resource('users',UserController::class);
 
+Route::get('/users', [UserController::class, 'index']);
+Route::post('/users/store', [UserController::class, 'store']);
+Route::get('/users/successLogin', [UserController::class, 'successLogin']);
+Route::get('/users/logout', [UserController::class, 'logout']);
 
-/*Route::post('/users', 'UserController@login');
-Route::get('users/login','UserController@getLogin');
-Route::post('users/login', 'UserController@postLogin');
-Route::get('users/logout', 'UserController@getLogout');
-*/
 /*
 Route::get('books', 'BookController@index');
 Route::get('books/{id}', 'BookController@show');
